@@ -21,9 +21,10 @@ SharedServicesContainer.AddSharedServices<DbContext>(builder.Services, builder.C
 
 //JwtAuthenticationScheme.AddJwtAuthenticationScheme(builder.Services, builder.Configuration);
 
-//// setting up AWS SNS asynchronous communication
-//builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
-//builder.Services.AddAWSService<IAmazonSimpleNotificationService>();
+// setting up AWS SNS asynchronous communication
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddAWSService<IAmazonSimpleNotificationService>();
+
 
 var app = builder.Build();
 

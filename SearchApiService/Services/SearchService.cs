@@ -63,7 +63,7 @@ namespace SearchApiService.Services
                     .Query(q => q
                         .MultiMatch(mm => mm.Query(req.query)
                             .Fields(f => f
-                                .Field(f => f.Name)
+                                .Field(f => f.ProductName)
                                     .Field(f => f.Description)
                             )
                         )
