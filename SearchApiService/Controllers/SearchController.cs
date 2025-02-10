@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SearchApiService.DTOs;
-using SearchApiService.Services;
+using SearchApiService.Interfaces;
+using SearchApiService.Models;
 
 namespace SearchApiService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/search")]
     [ApiController]
     public class SearchController : ControllerBase
     {
         private ISearchService _searchService;
         public SearchController(ISearchService searchService)
-        { 
+        {
             _searchService = searchService;
         }
 
         [HttpGet("product")]
-        public async Task<IActionResult> SearchByProduct([FromQuery] string productName, [FromQuery] int page, [FromQuery] int pageSize) 
+        public async Task<IActionResult> SearchByProduct([FromQuery] string productName, [FromQuery] int page, [FromQuery] int pageSize)
         {
             if (string.IsNullOrEmpty(productName))
             {
@@ -32,10 +33,11 @@ namespace SearchApiService.Controllers
                 );
                 return Ok(response);
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 return StatusCode(500, ex.Message);
             }
-            
+
         }
 
         [HttpGet("category")]
@@ -49,10 +51,7 @@ namespace SearchApiService.Controllers
             try
             {
                 var response = await _searchService.SearchByCategory(
-                new ProductSearchRequest
-                    {
-                        query = categoryName,
-                    }
+                    new ProductSearchRequest { query = categoryName }
                 );
                 return Ok(response);
             }
@@ -60,6 +59,26 @@ namespace SearchApiService.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+        }
+
+        [HttpPost("create-index")]
+        public async Task<IActionResult> CreateIndex(ProductDto product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(Request);
+            }
+            await _searchService.AddOrUpdate(
+                    new Product
+                    {
+                        Brand = product.Brand,
+                        ProductName = product.ProductName,
+                        Price = product.Price
+                    }
+                );
+            // http://localhost:9200/products/_search will get all search indexes
+
+            return Ok();
         }
     }
 }

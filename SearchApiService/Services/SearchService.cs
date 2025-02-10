@@ -1,6 +1,7 @@
 ﻿using SearchApiService.Models;
 using OpenSearch.Client;
 using SearchApiService.DTOs;
+using SearchApiService.Interfaces;
 
 namespace SearchApiService.Services
 {
@@ -14,7 +15,7 @@ namespace SearchApiService.Services
         }
         public async Task AddOrUpdate(Product product)
         {
-            await _client.IndexAsync<Product>(product, idx => idx.Index("products"));
+            var res = await _client.IndexAsync<Product>(product, idx => idx.Index("products"));
         }
 
         public async Task CreateIndexIfNotExistsAsync(string index)
@@ -40,8 +41,9 @@ namespace SearchApiService.Services
             var response = await _client.SearchAsync<Product>(s => s
                .Index("products")
                    .Query(q => q
-                       .Term(t => t.Field(f => f.Category.Suffix("keyword"))
-                            .Value(req.query)
+                       .Match(p => p
+                            .Field(f => f.Category)
+                            .Query(req.query)
                        )
                    )
                );
@@ -61,11 +63,13 @@ namespace SearchApiService.Services
             var response = await _client.SearchAsync<Product>(s => s
                 .Index("products")
                     .Query(q => q
-                        .MultiMatch(mm => mm.Query(req.query)
+                        .MultiMatch(mm => mm
+                            .Query(req.query)
                             .Fields(f => f
                                 .Field(f => f.ProductName)
-                                    .Field(f => f.Description)
+                                .Field(f => f.Description)
                             )
+                            .Fuzziness(Fuzziness.EditDistance(2))
                         )
                     )
                 );

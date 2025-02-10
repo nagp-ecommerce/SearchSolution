@@ -1,7 +1,7 @@
 ﻿using SearchApiService.DTOs;
 using SearchApiService.Models;
 
-namespace SearchApiService.Services
+namespace SearchApiService.Interfaces
 {
     public interface ISearchService
     {
