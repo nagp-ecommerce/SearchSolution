@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using SearchApiService.DTOs;
 using SearchApiService.Interfaces;
 using SearchApiService.Models;
@@ -62,6 +64,7 @@ namespace SearchApiService.Controllers
         }
 
         [HttpPost("create-index")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateIndex(ProductDto product)
         {
             if (!ModelState.IsValid)
