@@ -5,8 +5,6 @@ VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApiService", "SearchApiService\SearchApiService.csproj", "{DDC9A54E-1F80-45D9-A78D-CD5C0DAF96C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedService.Lib", "..\Ecommerce.SharedService\SharedService.Lib\SharedService.Lib.csproj", "{1C771883-504A-4D4B-B539-4BE22185760B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
