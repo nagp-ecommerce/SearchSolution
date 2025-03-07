@@ -1,5 +1,4 @@
-﻿using ProductService.Core.Entities;
-
+﻿
 namespace SearchApiService.DTOs
 {
     public class ProductDto

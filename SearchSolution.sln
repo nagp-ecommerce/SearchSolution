@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApiService", "SearchApiService\SearchApiService.csproj", "{DDC9A54E-1F80-45D9-A78D-CD5C0DAF96C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedService.Lib", "Ecommerce.SharedService\SharedService.Lib\SharedService.Lib.csproj", "{A185D7F6-542D-435D-A547-E720B48E190E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +17,10 @@ Global
 		{DDC9A54E-1F80-45D9-A78D-CD5C0DAF96C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDC9A54E-1F80-45D9-A78D-CD5C0DAF96C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDC9A54E-1F80-45D9-A78D-CD5C0DAF96C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C771883-504A-4D4B-B539-4BE22185760B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C771883-504A-4D4B-B539-4BE22185760B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C771883-504A-4D4B-B539-4BE22185760B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C771883-504A-4D4B-B539-4BE22185760B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A185D7F6-542D-435D-A547-E720B48E190E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A185D7F6-542D-435D-A547-E720B48E190E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A185D7F6-542D-435D-A547-E720B48E190E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A185D7F6-542D-435D-A547-E720B48E190E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
