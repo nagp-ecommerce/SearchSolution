@@ -3,8 +3,8 @@ name: Build and Push Docker Image for Search Service
 on:
   push:
     branches:
-      - main
-  pull_request:
+      - master
+  workflow_dispatch: 
 
 jobs:
   build-and-push:
